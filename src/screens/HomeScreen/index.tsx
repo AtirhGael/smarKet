@@ -3,11 +3,13 @@ import ProductItem from '../../components/ProductItem'
 import products from '../../data/products'
 
 
-const HomeScreen = () => {
+const HomeScreen = ({searchValue}:{searchValue:string}) => {
+  console.log(searchValue);
+  
   return (
     <View style={styles.container}>
            <FlatList
-           showsVerticalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
         //    key={`${item.id}-${i}`}
            data={products}
            renderItem={({item,})=><View>

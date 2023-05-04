@@ -1,13 +1,17 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import React,{useState} from 'react'
 import styles from './styles'
-import product from '../../../data/product'
+import product from '../../data/product'
 import {Picker} from '@react-native-picker/picker';
-import QuantitySelector from '../../../components/QuantitySelector';
-import Button from '../../../components/Buttons';
-import ImageCrrousel from '../../../components/ImageCarrosel';
+import QuantitySelector from '../../components/QuantitySelector';
+import Button from '../../components/Buttons';
+import ImageCrrousel from '../../components/ImageCarrosel';
+import { useRoute } from '@react-navigation/native';
 
 const ProductScreen = () => {
+  const route = useRoute()
+  console.log(route.params);
+  
     const [quantity,setQuantity] = useState(1)
     
     const [selected , setSelected] = useState(product.options?product.options[0]:null)

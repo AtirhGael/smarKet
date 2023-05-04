@@ -1,10 +1,14 @@
-import { StyleSheet, Text, View,Image, Pressable } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View,Image } from 'react-native'
+import React, { useState } from 'react'
 import { FontAwesome } from '@expo/vector-icons';
 import styles from './styles';
-import { useNavigation } from '@react-navigation/native';
+import QuantitySelector from '../QuantitySelector';
 
-interface ProductItemProp{
+interface cartProductItemProp{
+  cartItem:{
+    id:string;
+    quantity:number;
+    option?:string;
     item:{
         id:string;
         title:string;
@@ -14,22 +18,15 @@ interface ProductItemProp{
         price:number;
         oldPrice?:number;
     };
+  }
 }
 
-
-const ProductItem = (props:ProductItemProp) => {
-
-  const navigation = useNavigation()
-
-  const {item} =props 
-
-  function pressable(){
-    console.log('pres breast');
-    navigation.navigate('prodcuctScreen',{id:item.id})
-  }
+const CardProductItem = ({cartItem}:cartProductItemProp) => {
+    const {quantity:quantityProp,item} = cartItem;
+    const [quantity,setQuantity] = useState(quantityProp)
   return (
     <View style={styles.container}>
-    <Pressable onPress={pressable} style={styles.root} >
+    <View style={styles.root} >
       <Image style={styles.image} source={{uri:item.image}}/>
       <View style={styles.right} >
           <Text style={styles.title} numberOfLines={3}> {item.title} </Text>
@@ -54,11 +51,14 @@ const ProductItem = (props:ProductItemProp) => {
           </View>
          
       </View>
-    </Pressable>
+    </View>
+    <View style={styles.qty}>
 
+                <QuantitySelector quantity={quantity} setQuantity={setQuantity}/>
+    </View>
   </View>
   )
 }
 
-export default ProductItem
+export default CardProductItem
 

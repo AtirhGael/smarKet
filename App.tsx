@@ -1,16 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import HomeScreen from './src/screens/HomeScreen';
-import ProductScreen from './src/screens/HomeScreen/ProductScreen';
+import Routers from './src/Router/indext';
+// import { NavigationContainer } from '@react-navigation/native';
 
 export default function App() {
   return (
-    
+ 
     <View style={styles.container}>
-      {/* <HomeScreen/> */}
-      <ProductScreen/>
-      <StatusBar style="auto" />
+      <Routers/>
     </View>
+
   );
 }
 
@@ -18,7 +17,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-   paddingTop:25,
-   margin:10
+   
+   margin:1
   },
 });
