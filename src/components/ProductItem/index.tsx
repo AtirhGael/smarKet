@@ -3,6 +3,7 @@ import React from 'react'
 import { FontAwesome } from '@expo/vector-icons';
 import styles from './styles';
 import { useNavigation } from '@react-navigation/native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 interface ProductItemProp{
     item:{
